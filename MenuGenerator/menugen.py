@@ -28,7 +28,7 @@ class MenuGen:
         # self._imprimir_titulo()
         # self._imprimir_opciones()
         print(self._imprimir_opciones2())
-
+        print(self._recibir_opcion())
     
     # Metodos privados
 
@@ -63,7 +63,11 @@ class MenuGen:
                                                                 ) for i in range(self.cantidad)
                                             ]
                                         ),
-                                " Ingrese una opcion:"
+                                " Ingrese una opcion del (1-{}):".format(self.cantidad)
                             ]
                         )
                 )
+    
+    def _recibir_opcion(self):
+        return (int(input("> ")))
+        
