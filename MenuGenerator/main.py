@@ -2,6 +2,8 @@
 
 Autor: Geordie Quiroa
 """
+from functools import reduce
+
 from menugen import MenuGen
 
 nombre_menu = "operaciones basicas"

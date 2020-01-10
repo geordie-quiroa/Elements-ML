@@ -2,7 +2,8 @@
 
 Autor: Geordie Quiroa
 
-Este modulo crea la estructura interna para generar cualquier menu.
+Este modulo crea la estructura interna para generar cualquier menu de funciones numericas,
+cuyas funciones utilizen 2 parametros.
 """
 
 class MenuGen:
@@ -69,5 +70,6 @@ class MenuGen:
                 )
     
     def _recibir_opcion(self):
-        return (int(input("> ")))
+        
+        tmpi = int(input("> ")))
         
