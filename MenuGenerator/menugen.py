@@ -22,6 +22,9 @@ class MenuGen:
         self.opciones = opciones_dict.items()
         self.nombre = nombre
         self.cantidad = len(opciones_dict)
+        
+        # Atributos internos
+        self._variables = (0, 0)  # Es un menu para dos parametros de entrada
     
     # Metodos publicos
 
@@ -29,7 +32,8 @@ class MenuGen:
         # self._imprimir_titulo()
         # self._imprimir_opciones()
         print(self._imprimir_opciones2())
-        print(self._recibir_opcion())
+        self._recibir_opcion()
+        
     
     # Metodos privados
 
@@ -69,7 +73,17 @@ class MenuGen:
                         )
                 )
     
-    def _recibir_opcion(self):
+    def _recibir_opcion(self) -> int:
+        try:
+            input_ = int(input("> "))
+
+            if input_ not in [i+1 for i in range(self.cantidad)]:
+                self._input_invalido(input_)
+            else:
+                return (input_)
+        except Exception as exc:
+            raise self._input_invalido(str(exc))
         
-        tmpi = int(input("> ")))
-        
+    def _input_invalido(self, p="X") -> None:
+        print("Se ha ingrsado un valor invalido. - {} - es invalido".format(p))
+    
