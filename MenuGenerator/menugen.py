@@ -35,7 +35,9 @@ class MenuGen:
         # self._imprimir_opciones()
         print(self._imprimir_opciones2())
         #self._recibir_opcion()
-        self.variables, self.resultado = self._operar_n_parametros(input_menu=self._recibir_opcion())
+        _input_menu = self._recibir_opcion()
+        self.variables, self.resultado = self._operar_n_parametros(input_menu=_input_menu)
+        print(self._imprimir_resultado(opcion = _input_menu))
     
     # Metodos privados
 
@@ -109,8 +111,8 @@ class MenuGen:
 
         return (_params, reduce(_funcionalidad, _params))
 
-    #def _imprimir_resultado(self, )
-            
+    def _imprimir_resultado(self, opcion):
+        return "El resultado para {} es: {}".format(list(self.dictionary.keys())[opcion], self.resultado)            
 
 
     
