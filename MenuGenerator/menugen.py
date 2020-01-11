@@ -3,10 +3,10 @@
 Autor: Geordie Quiroa
 
 Este modulo crea la estructura interna para generar cualquier menu de funciones numericas,
-cuyas funciones utilizen 2 parametros.
+cuyas funciones esten en formato lambda.
 """
 
-import inspect # Para contar n parametros de una funcion, y solicitar n inputs.
+import inspect  # Para contar n parametros de una funcion, y solicitar n inputs.
 
 class MenuGen:
 
@@ -15,7 +15,7 @@ class MenuGen:
         """ Crea los atributos del menu.
         
         Keyword arguments:
-        opciones_dict -- un diccionario cuya llave es el nombre de la funcionalidad, y su valor es la funcion a ejecutar.
+        opciones_dict -- un diccionario cuya llave es el nombre de la funcionalidad, y su valor es la funcion lambda a ejecutar.
         nombre -- es el nombre del menu. 
         """
         
@@ -34,7 +34,8 @@ class MenuGen:
         # self._imprimir_titulo()
         # self._imprimir_opciones()
         print(self._imprimir_opciones2())
-        self._recibir_opcion()
+        #self._recibir_opcion()
+        self._solicitar_n_parametros(input_menu=self._recibir_opcion())
         
     
     # Metodos privados
@@ -85,9 +86,28 @@ class MenuGen:
         if input_ not in [i+1 for i in range(self.cantidad)]:
             self._input_invalido(input_)
         else:
-            return (input_)
+            return (input_ - 1) # para indexar correctamente en el diccionario
 
         
     def _input_invalido(self, p="X") -> None:
         print("Se ha ingresado un valor invalido. - {} - Intente de nuevo.".format(p))
+        
+        return (None)
+
+    def _solicitar_n_parametros(self, input_menu) -> list:
+        """Solicita parametros de cantidad variable.
+        Dependiendo de la catidad de argumentos que la funcion en el diccionario utilice.
+
+        Retorna una lista con los parametros ingresados
+        """
+        _params = []
+        for i in range(len(inspect.getargspec(list(self.dictionary.values())[input_menu])[0])): # cuenta la cantidad de argumentos de la funcion en el diccionario
+            try:
+                _params.append(int(input("Ingrese parametro {}: ".format(i+1))))
+            except Exception as exc:
+                return (self._input_invalido(str(exc)))
+        return (_params)
+            
+
+
     
