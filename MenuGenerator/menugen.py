@@ -85,7 +85,7 @@ class MenuGen:
         Retorna una lista con los parametros ingresados, y el resultado de operar la funcion lambda.
         """
         _params = []
-        _funcionalidad = list(self.dictionary.values())[input_menu] # [0] para convertirlo en un escalar
+        _funcionalidad = list(self.dictionary.values())[input_menu] # Para acceder a las caracteristicas de la funcionalidad seleccionada.
         for i in range(len(inspect.getargspec(_funcionalidad)[0])): # cuenta la cantidad de argumentos de la funcion en el diccionario
             try:
                 _params.append(float(input("Ingrese parametro {}: ".format(i+1))))
