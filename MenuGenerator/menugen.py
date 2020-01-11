@@ -1,4 +1,4 @@
-""" Generador de Menus
+""" Generador de Menus dinamicos
 
 Autor: Geordie Quiroa
 
@@ -7,6 +7,7 @@ cuyas funciones esten en formato lambda.
 """
 
 import inspect  # Para contar n parametros de una funcion, y solicitar n inputs.
+from functools import reduce # Se utiliza para iterar y hacer calculos sobre listas
 
 class MenuGen:
 
@@ -24,9 +25,8 @@ class MenuGen:
         self.opciones = opciones_dict.items()
         self.nombre = nombre
         self.cantidad = len(opciones_dict)
-        
-        # Atributos internos
-        self._variables = (0, 0)  # Es un menu para dos parametros de entrada
+        self.variables = []
+        self.resultado = []
     
     # Metodos publicos
 
@@ -35,8 +35,7 @@ class MenuGen:
         # self._imprimir_opciones()
         print(self._imprimir_opciones2())
         #self._recibir_opcion()
-        self._solicitar_n_parametros(input_menu=self._recibir_opcion())
-        
+        self.variables, self.resultado = self._operar_n_parametros(input_menu=self._recibir_opcion())
     
     # Metodos privados
 
@@ -94,19 +93,23 @@ class MenuGen:
         
         return (None)
 
-    def _solicitar_n_parametros(self, input_menu) -> list:
+    def _operar_n_parametros(self, input_menu) -> list:
         """Solicita parametros de cantidad variable.
         Dependiendo de la catidad de argumentos que la funcion en el diccionario utilice.
 
-        Retorna una lista con los parametros ingresados
+        Retorna una lista con los parametros ingresados, y el resultado de operar la funcion lambda.
         """
         _params = []
-        for i in range(len(inspect.getargspec(list(self.dictionary.values())[input_menu])[0])): # cuenta la cantidad de argumentos de la funcion en el diccionario
+        _funcionalidad = list(self.dictionary.values())[input_menu] # [0] para convertirlo en un escalar
+        for i in range(len(inspect.getargspec(_funcionalidad)[0])): # cuenta la cantidad de argumentos de la funcion en el diccionario
             try:
-                _params.append(int(input("Ingrese parametro {}: ".format(i+1))))
+                _params.append(float(input("Ingrese parametro {}: ".format(i+1))))
             except Exception as exc:
                 return (self._input_invalido(str(exc)))
-        return (_params)
+
+        return (_params, reduce(_funcionalidad, _params))
+
+    #def _imprimir_resultado(self, )
             
 
 

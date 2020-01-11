@@ -22,7 +22,8 @@ opciones = {
 menu = MenuGen(opciones, nombre_menu)
 
 menu.generar_menu()
-
+print(menu.variables)
+print(menu.resultado)
 #uno = (5,)
 #dos = (7,)
 
