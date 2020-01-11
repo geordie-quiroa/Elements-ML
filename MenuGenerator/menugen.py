@@ -60,22 +60,18 @@ class MenuGen:
                         )
                 )
     
-    def _recibir_opcion(self) -> int:
-        
+    def _recibir_opcion(self) -> int: 
         try:
             input_ = int(input("> "))
         except Exception as exc:
             return (self._input_invalido(str(exc)))
-
         if input_ not in [i+1 for i in range(self.cantidad)]:
             self._input_invalido(input_)
         else:
             return (input_ - 1) # para indexar correctamente en el diccionario
 
-        
     def _input_invalido(self, p="X") -> None:
         print("Se ha ingresado un valor invalido. - {} - Intente de nuevo.".format(p))
-        
         return (None)
 
     def _operar_n_parametros(self, input_menu) -> list:
@@ -91,7 +87,6 @@ class MenuGen:
                 _params.append(float(input("Ingrese parametro {}: ".format(i+1))))
             except Exception as exc:
                 return (self._input_invalido(str(exc)))
-
         return (_params, reduce(_funcionalidad, _params))
 
     def _imprimir_resultado(self, opcion) -> str:
