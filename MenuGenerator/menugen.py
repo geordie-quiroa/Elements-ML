@@ -87,6 +87,7 @@ class MenuGen:
                 _params.append(float(input("Ingrese parametro {}: ".format(i+1))))
             except Exception as exc:
                 return (self._input_invalido(str(exc)))
+        print(_params)
         return (_params, reduce(_funcionalidad, _params))
 
     def _imprimir_resultado(self, opcion) -> str:

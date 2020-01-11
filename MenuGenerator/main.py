@@ -14,11 +14,21 @@ opciones = {
                 "Restar": lambda x, y: x - y,
                 "Multiplicar": lambda x, y: x * y,
                 "Dividir": lambda x, y: x / y,
-                "Hipotenusa": lambda x, y: math.sqrt(x**2 + y**2)
+                "Hipotenusa": lambda x, y: math.sqrt(x**2 + y**2),
+                "Triple producto": lambda x, y, z: x*y*z
             }
 
-menu = MenuGen(opciones, nombre_menu)
+#menu = MenuGen(opciones, nombre_menu)
 
-menu.generar_menu()
+#menu.generar_menu()
 #print(menu.variables)
 #print(menu.resultado)
+
+def suma(x,y,z):
+    return x+y+z
+
+import inspect
+
+print(inspect.getargspec(suma))
+variables = [[1],[2],[3]]
+
