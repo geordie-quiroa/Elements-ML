@@ -31,31 +31,14 @@ class MenuGen:
     # Metodos publicos
 
     def generar_menu(self):
-        # self._imprimir_titulo()
-        # self._imprimir_opciones()
-        print(self._imprimir_opciones2())
-        #self._recibir_opcion()
+        print(self._imprimir_opciones())
         _input_menu = self._recibir_opcion()
         self.variables, self.resultado = self._operar_n_parametros(input_menu=_input_menu)
         print(self._imprimir_resultado(opcion = _input_menu))
     
     # Metodos privados
 
-    def _imprimir_titulo(self):
-        print(" ------ Bienvenido al Menu de {} ------\n Las opciones son las siguientes:\n".format(self.nombre))
-
-
-
-    def _imprimir_opciones(self):
-        #"\n".join(["{} --> {}".format(key, value) for key, value in self.opciones])
-        for key, value in self.opciones:
-           print(""" {} -> {} """.format(
-                                    key,
-                                    value
-                                )
-            )
-
-    def _imprimir_opciones2(self) -> str:
+    def _imprimir_opciones(self) -> str:
         """Concatena cada elemento visual del menu, tomando en cuenta la variacion de opciones.
         
         Retorna un string con enters para la visualizacion del menu.
@@ -111,7 +94,7 @@ class MenuGen:
 
         return (_params, reduce(_funcionalidad, _params))
 
-    def _imprimir_resultado(self, opcion):
+    def _imprimir_resultado(self, opcion) -> str:
         return "El resultado para {} es: {}".format(list(self.dictionary.keys())[opcion], self.resultado)            
 
 
