@@ -6,6 +6,8 @@ Este modulo crea la estructura interna para generar cualquier menu de funciones 
 cuyas funciones utilizen 2 parametros.
 """
 
+import inspect # Para contar n parametros de una funcion, y solicitar n inputs.
+
 class MenuGen:
 
     # Inicializador / atributos de instancia
@@ -51,7 +53,7 @@ class MenuGen:
                                 )
             )
 
-    def _imprimir_opciones2(self):
+    def _imprimir_opciones2(self) -> str:
         """Concatena cada elemento visual del menu, tomando en cuenta la variacion de opciones.
         
         Retorna un string con enters para la visualizacion del menu.
@@ -78,13 +80,14 @@ class MenuGen:
         try:
             input_ = int(input("> "))
         except Exception as exc:
-            return self._input_invalido(str(exc))
-        
+            return (self._input_invalido(str(exc)))
+
         if input_ not in [i+1 for i in range(self.cantidad)]:
             self._input_invalido(input_)
         else:
             return (input_)
+
         
     def _input_invalido(self, p="X") -> None:
-        print("Se ha ingrsado un valor invalido. - {} - es invalido".format(p))
+        print("Se ha ingresado un valor invalido. - {} - Intente de nuevo.".format(p))
     
