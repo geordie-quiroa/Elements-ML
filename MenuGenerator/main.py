@@ -4,8 +4,6 @@ Autor: Geordie Quiroa
 """
 
 import math  # Se utiliza para calcular raiz cuadrada en hipotenusa
-import inspect
-
 
 from menugen import MenuGen
 
