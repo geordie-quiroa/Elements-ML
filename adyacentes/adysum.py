@@ -1,10 +1,21 @@
-"""Este modulo encuentra el camino con la suma mas larga.
+"""Este modulo encuentra el camino de un triangulo cuya sumatoria de adyacentes sea la mas larga.
+
+Autor: Geordie Quiroa
+
+Retorna un string con el resultado de la sumatoria.
 """
 
-def procesar(path2file) -> int:
+# Metodo publico
+
+def procesar(path2file) -> str:
+    """Args
+    Path de un archivo .txt cuyos digitos formen un triangulo. 
+    """
     lineas = open(path2file,'r').read().split('\n')
-    arbol_limpio = [list(map(int,linea.split())) for linea in lineas if len(linea.split()) > 0]  # omite lineas vacias y convierte cada elemento a entero
-    return _recorrer(arbol_limpio)
+    arbol_limpio = [list(map(float,linea.split())) for linea in lineas if len(linea.split()) > 0]  # omite lineas vacias y convierte cada elemento a digito
+    return ("Total: {}".format(_recorrer(arbol_limpio)))
+
+# Metodos privados
 
 def _adyacente(arreglo, indice_anterior, total_acum) -> list:
     max_len = len(arreglo)
