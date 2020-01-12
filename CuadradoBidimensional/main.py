@@ -1,13 +1,13 @@
-from escuadrado import cuadrado
+from escuadrado import es_cuadrado
 
 coordenadas = [
-            (2,3),
-            (6,-1),
-            (6,3),
-            (2,-1)
-        ]
+                (2,3),
+                (6,-1),
+                (6,3),
+                (2,-1)
+            ]
 
-print(cuadrado(coordenadas))
+print(es_cuadrado(coordenadas))
 
 # _abscisas = []
 # _ordenadas = []
