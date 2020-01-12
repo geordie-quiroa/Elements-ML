@@ -105,8 +105,6 @@ class MenuGen:
             elif _n_args == 5:
                 return (_params, _funcionalidad(_params[0], _params[1], _params[2], _params[3], _params[4]))
                 
-
-
     def _imprimir_resultado(self, opcion) -> str:
         return "El resultado para {} es: {}".format(list(self.dictionary.keys())[opcion], self.resultado)            
 
