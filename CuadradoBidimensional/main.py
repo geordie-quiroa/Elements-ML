@@ -1,6 +1,11 @@
+"""Este archivo es para probar el modulo es cuadrado.
+
+Autor: Geordie Quiroa
+"""
+
 from escuadrado import es_cuadrado
 
-coordenadas = [
+coordenadas = [  # Esas coordenadas si forman un cuadrado.
                 (2,3),
                 (6,-1),
                 (6,3),
@@ -8,13 +13,3 @@ coordenadas = [
             ]
 
 print(es_cuadrado(coordenadas))
-
-# _abscisas = []
-# _ordenadas = []
-# for tupla in tuplas:
-#     x,y = tupla
-#     _abscisas.append(x)
-#     _ordenadas.append(y)
-
-# print(max(set(_abscisas)) - min(set(_abscisas)))
-# print(max(set(_ordenadas)) - min(set(_ordenadas)))
