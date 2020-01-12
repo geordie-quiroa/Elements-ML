@@ -1,11 +1,10 @@
 """Este modulo encuentra el camino con la suma mas larga.
 """
 
-def procesar(path2file):
+def procesar(path2file) -> int:
     lineas = open(path2file,'r').read().split('\n')
     arbol_limpio = [list(map(int,linea.split())) for linea in lineas if len(linea.split()) > 0]  # omite lineas vacias y convierte cada elemento a entero
-    print(arbol_limpio)
-    _recorrer(arbol_limpio)
+    return _recorrer(arbol_limpio)
 
 def _adyacente(arreglo, indice_anterior, total_acum) -> list:
     max_len = len(arreglo)
@@ -17,18 +16,11 @@ def _adyacente(arreglo, indice_anterior, total_acum) -> list:
         #sup = max_len
     total_acum += max(arreglo[inf:sup])
     idx = arreglo.index(max(arreglo[inf:sup]))
-
-    
     return (idx,total_acum)
 
-def _recorrer(arbol):
-    total = 0
+def _recorrer(arbol) -> int:
+    total, idx = 0, 0
     for i in range(len(arbol)): # recorre cada linea del archivo
-        if i == 0:
-            total += arbol[0][0]
-            idx = 0
-        else:
-            idx, total = _adyacente(arbol[i], idx, total)
-        #adyacente(nivel)
-    print(total)
+        idx, total = _adyacente(arbol[i], idx, total)
+    return (total)
 
