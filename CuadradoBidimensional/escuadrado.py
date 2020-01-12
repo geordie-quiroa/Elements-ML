@@ -2,8 +2,8 @@
 
 Autor: Geordie Quiroa
 
-Para lograrlo, utiliza las siguientes propiedades:
-    - La cantidad de valores unicos en los ejes X y Y seran iguales para cada uno de los ejes debido a que forman un cuadrado.
+Para lograrlo, se utilizaron las siguientes propiedades y deducciones:
+    - La cantidad de valores unicos en los ejes X y Y seran iguales para cada uno de los ejes debido a la geometria vectorial de un cuadrado.
     - La distancia para los puntos en el eje X es la misma que la de los puntos en el eje Y.
 
 Retorna un string con un enunciado afirmativo o negativo.
