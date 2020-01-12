@@ -3,7 +3,7 @@
 Autor: Geordie Quiroa
 
 Este modulo crea la estructura interna para generar cualquier menu de funciones numericas,
-cuyas funciones esten en formato lambda.
+cuyas funciones tengan un maximo de 5 parametros, o la funcion lambda contenga menos de 3 argumentos.
 """
 
 import inspect  # Para contar n parametros de una funcion, y solicitar n inputs.
@@ -82,13 +82,30 @@ class MenuGen:
         """
         _params = []
         _funcionalidad = list(self.dictionary.values())[input_menu] # Para acceder a las caracteristicas de la funcionalidad seleccionada.
-        for i in range(len(inspect.getargspec(_funcionalidad)[0])): # cuenta la cantidad de argumentos de la funcion en el diccionario
+        _n_args = len(inspect.getargspec(_funcionalidad)[0]) # cuenta la cantidad de argumentos de la funcion en el diccionario
+        _lambda_regx = "<lambda>"
+        for i in range(_n_args): 
             try:
                 _params.append(float(input("Ingrese parametro {}: ".format(i+1))))
             except Exception as exc:
                 return (self._input_invalido(str(exc)))
         print(_params)
-        return (_params, reduce(_funcionalidad, _params))
+        #if (isinstance(_funcionalidad, LambdaType)):  # Para funciones lambda
+        if _funcionalidad.__name__ == _lambda_regx:
+            return (_params, reduce(_funcionalidad, _params))
+        else:  # Para otro tipo de funciones. 
+            if _n_args == 1:
+                return (_params, _funcionalidad(_params[0]))
+            elif _n_args == 2:
+                return (_params, _funcionalidad(_params[0], _params[1]))
+            elif _n_args == 3:
+                return (_params, _funcionalidad(_params[0], _params[1], _params[2]))
+            elif _n_args == 4:
+                return (_params, _funcionalidad(_params[0], _params[1], _params[2], _params[3]))
+            elif _n_args == 5:
+                return (_params, _funcionalidad(_params[0], _params[1], _params[2], _params[3], _params[4]))
+                
+
 
     def _imprimir_resultado(self, opcion) -> str:
         return "El resultado para {} es: {}".format(list(self.dictionary.keys())[opcion], self.resultado)            
