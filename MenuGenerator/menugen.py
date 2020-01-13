@@ -89,11 +89,10 @@ class MenuGen:
                 _params.append(float(input("Ingrese parametro {}: ".format(i+1))))
             except Exception as exc:
                 return (self._input_invalido(str(exc)))
-        print(_params)
-        #if (isinstance(_funcionalidad, LambdaType)):  # Para funciones lambda
+
         if _funcionalidad.__name__ == _lambda_regx:
             return (_params, reduce(_funcionalidad, _params))
-        else:  # Para otro tipo de funciones. 
+        else:  # Para otro tipo de funciones que no son lambda. 
             if _n_args == 1:
                 return (_params, _funcionalidad(_params[0]))
             elif _n_args == 2:
