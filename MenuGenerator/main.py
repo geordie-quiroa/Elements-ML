@@ -25,7 +25,7 @@ opciones = {
                 "Dividir": lambda x, y: x / y,
                 "Hipotenusa": lambda x, y: math.sqrt(x**2 + y**2),
                 "Suma triple": suma,
-                "Aplicar descuento": aplicar_descuento
+                "Aplicar descuento": aplicar_descuento,
             }
 
 menu = MenuGen(opciones, nombre_menu)
