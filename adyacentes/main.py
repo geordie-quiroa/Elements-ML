@@ -1,5 +1,5 @@
 import adysum
 
-path = "./testfile.txt"
+path = "./triangle.txt"
 
 print(adysum.procesar(path))
