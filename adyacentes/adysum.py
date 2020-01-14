@@ -17,7 +17,7 @@ def procesar(path2file) -> str:
 
 # Metodos privados
 
-def _adyacente(arreglo, indice_anterior, total_acum) -> list:
+def _adyacente(arreglo, indice_anterior, total_acum) -> tuple:
     max_len = len(arreglo)
     inf, sup = 0, max_len
     if indice_anterior != 0 and max_len > 3:  # caso en el que la linea tiene mas de 3 numeros, se puede indexar hacia ambos lados. 
