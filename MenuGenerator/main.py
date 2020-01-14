@@ -4,11 +4,11 @@ Autor: Geordie Quiroa
 """
 
 import math  # Se utiliza para calcular raiz cuadrada en hipotenusa
-from types import LambdaType
 
 from menugen import MenuGen
 
 nombre_menu = "operaciones basicas"
+
 def suma(x,y,z):
     return x+y+z
 
@@ -24,4 +24,3 @@ opciones = {
 menu = MenuGen(opciones, nombre_menu)
 
 menu.generar_menu()
-
