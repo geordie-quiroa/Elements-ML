@@ -13,7 +13,7 @@ def suma(x,y,z):
     return x+y+z
 
 def aplicar_descuento(precio, descuento):
-    if 0 <= descuento <= 100:
+    if 0 < descuento <= 100:
         return precio - precio * descuento/100
     else: 
         return "Ingrese un descuento valido."
@@ -25,7 +25,7 @@ opciones = {
                 "Dividir": lambda x, y: x / y,
                 "Hipotenusa": lambda x, y: math.sqrt(x**2 + y**2),
                 "Suma triple": suma,
-                "Aplicar descuento": aplicar_descuento,
+                "Aplicar descuento porcentual": aplicar_descuento,
             }
 
 menu = MenuGen(opciones, nombre_menu)
