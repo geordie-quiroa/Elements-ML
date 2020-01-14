@@ -64,9 +64,12 @@ class MenuGen:
         try:
             input_ = int(input("> "))
         except Exception as exc:
-            return (self._input_invalido(str(exc)))
+            self._input_invalido(str(exc))
+            exit(1)
+            
         if input_ not in [i+1 for i in range(self.cantidad)]:
             self._input_invalido(input_)
+            exit(1)
         else:
             return (input_ - 1) # para indexar correctamente en el diccionario
 
