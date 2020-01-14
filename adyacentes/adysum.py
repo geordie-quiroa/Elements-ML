@@ -29,7 +29,7 @@ def _adyacente(arreglo, indice_anterior, total_acum) -> list:
     return (idx,total_acum)
 
 def _recorrer(arbol) -> int:
-    total, idx = 0, 0
+    idx, total = 0, 0
     for i in range(len(arbol)): # recorre cada linea del archivo
         idx, total = _adyacente(arbol[i], idx, total)
     return (total)
