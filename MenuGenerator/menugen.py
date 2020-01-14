@@ -7,7 +7,7 @@ cuyas funciones tengan un maximo de 5 parametros, o la funcion lambda contenga m
 """
 
 import inspect  # Para contar n parametros de una funcion, y solicitar n inputs.
-from functools import reduce # Se utiliza para iterar y hacer calculos sobre listas
+from functools import reduce  # Se utiliza para iterar y hacer calculos sobre listas
 
 class MenuGen:
 
@@ -106,6 +106,3 @@ class MenuGen:
                 
     def _imprimir_resultado(self, opcion) -> str:
         return ("El resultado para {} es: {}".format(list(self.dictionary.keys())[opcion], self.resultado))
-
-
-    
