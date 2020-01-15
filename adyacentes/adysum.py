@@ -1,4 +1,4 @@
-"""Este modulo encuentra el camino de un triangulo cuya sumatoria de adyacentes sea la mas larga.
+""" Este modulo encuentra el camino de un triangulo cuya sumatoria de adyacentes sea la mas larga.
 
 Autor: Geordie Quiroa
 
@@ -8,7 +8,7 @@ Retorna un string con el resultado de la sumatoria.
 # Metodo publico
 
 def procesar(path2file) -> str:
-    """Args
+    """ Args
     path2file -- Path de un archivo .txt cuyos digitos formen un triangulo. 
     """
     lineas = open(path2file,'r').read().split('\n')

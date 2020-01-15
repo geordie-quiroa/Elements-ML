@@ -1,4 +1,4 @@
-""" Archivo para probar el modulo generador de Menu
+ """ Archivo para probar el modulo generador de Menu
 
 Autor: Geordie Quiroa
 """
