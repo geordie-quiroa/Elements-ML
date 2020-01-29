@@ -24,14 +24,23 @@ ys = [fx(x) for x in xs]
 m = len(xs) 
 #j = (y - h_teta)**2
 
-plt.scatter(xs, ys)
-plt.show()
+#plt.scatter(xs, ys)
+#plt.show()
 
 h_teta = lambda teta_0, teta_1, x: teta_0 + teta_1 * x
 
-j = lambda teta_0, teta_1: 1/2*m * (sum([(h_teta(teta_0, teta_1, i) - ys[i])**2 for i in xs])) 
+#error_cuadrado = [(h_teta(teta_0, teta_1, i) - fx(i))**2 for i in xs]
 
-print(j(2, 3))
+j = lambda teta_0, teta_1: 1 * (2*m)**-1 * sum([(h_teta(teta_0, teta_1, i) - fx(i))**2 for i in xs])
+
+# def jota(teta_0, teta_1):
+#    return 1 / 2*m * sum(error_cuadrado)
+
+print(teta_0, teta_1)
+print(j(0, 1))
+
+#print(h_teta(teta_0, teta_1, 1))
+#print(error_cuadrado[:5])
 
 def descenso_gradiente(j, alpha):
     teta_0 = 0
