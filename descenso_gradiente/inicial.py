@@ -36,6 +36,8 @@ j = lambda teta_0, teta_1: 1 * (2*m)**-1 * sum([(h_teta(teta_0, teta_1, i) - fx(
 # def jota(teta_0, teta_1):
 #    return 1 / 2*m * sum(error_cuadrado)
 
+alpha = 1.5
+
 print(teta_0, teta_1)
 print(j(teta_0, teta_1))
 print(0, 1)
@@ -43,26 +45,26 @@ print(j(0, 1))
 teta_0 = 0
 teta_1 = 1
 
-teta_0 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
+teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
+teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
 
 print(teta_0, teta_1)
 print(j(teta_0, teta_1))
 
-teta_0 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
+teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
+teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
 
 print(teta_0, teta_1)
 print(j(teta_0, teta_1))
 
-teta_0 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
+teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
+teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
 
 print(teta_0, teta_1)
 print(j(teta_0, teta_1))
 
-teta_0 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
+teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
+teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
 
 print(teta_0, teta_1)
 print(j(teta_0, teta_1))
