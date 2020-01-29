@@ -51,6 +51,7 @@ n = 0
 # Total de series en los datos
 m = float(len(xs))
 
+# Funcion de error.
 def j(t_0, t_1, xs, ys):
     error = 0.0
     for i in range(len(xs)):
