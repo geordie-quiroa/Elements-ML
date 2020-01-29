@@ -48,8 +48,15 @@ convergido = False
 # Numero de iteraciones inicial
 n = 0
 
-# Total de series en los datos 
+# Total de series en los datos
 m = float(len(xs))
+
+def j(t_0, t_1, xs, ys):
+    error = 0.0
+    for i in range(len(xs)):
+        error+= (ys[i] - (t_0 + t_1*xs[i]))
+
+    return (error / (2*m))
 
 while not convergido:
 
@@ -57,9 +64,10 @@ while not convergido:
     teta_1_gradient = 0
 
     for i in range(0, len(xs)): # sumatoria de la derivada parcial para cada teta.
-        teta_0_gradient += (ys[i] - (teta_0 + teta_1 * xs[i]))
-        teta_1_gradient += (ys[i] - (teta_0 + teta_1 * xs[i])) * xs[i]
-        
+        h_teta = teta_0 + teta_1 * xs[i]
+        teta_0_gradient += (ys[i] - h_teta)
+        teta_1_gradient += (ys[i] - h_teta) * xs[i]
+
     # reajuste de los valores de teta, variando a la tasa del learning rate y resultado de la derivada parcial.
     teta_0 -= (alpha * (teta_0_gradient / m))
     teta_1 -= (alpha * (teta_1_gradient / m))
@@ -71,5 +79,5 @@ while not convergido:
         convergido = True
 
     n+=1
-    
+
 print("Los valores que se obtienen son: {}, {} en {} pasos.".format(teta_0, teta_1, n))
