@@ -4,32 +4,44 @@ import matplotlib.pyplot as plt
 
 seed(1)
 
-#beta_1 = ((random() - 0.5) * 2 * desv * random() + x  )
+#teta_1 = ((random() - 0.5) * 2 * desv * random() + x  )
 
 desv = 0.5
 
 mu = 2
 
-beta_1 = ((random() - 0.5) * 2 * desv * random() + mu)
+teta_1 = ((random() - 0.5) * 2 * desv * random() + mu)
 
-beta_0 = 5
+teta_0 = 5
 
-fx = lambda x: beta_0 + beta_1*x + ((random() - 0.5) * 2 * desv * random() + mu  ) if x % 2 == 0 \
-    else beta_0 + beta_1*x - ((random() - 0.5) * 2 * desv * random() + mu  )
+fx = lambda x: teta_0 + teta_1*x + ((random() - 0.5) * 2 * desv * random() + mu)*1.5 if x % 2 == 0 \
+    else teta_0 + teta_1*x - ((random() - 0.5) * 2 * desv * random() + mu)*1.5
 
 xs = [i for i in range(100)]
 ys = [fx(x) for x in xs]
 
-#h_teta = beta_0 + beta_1*x
+#h_teta = teta_0 + teta_1*x
 m = len(xs) 
 #j = (y - h_teta)**2
 
 plt.scatter(xs, ys)
 plt.show()
 
+h_teta = lambda teta_0, teta_1, x: teta_0 + teta_1 * x
+
+j = lambda teta_0, teta_1: 1/2*m * (sum([(h_teta(teta_0, teta_1, i) - ys[i])**2 for i in xs])) 
+
+print(j(2, 3))
+
 def descenso_gradiente(j, alpha):
-    beta_0 = 0
-    beta_1 = 1
-    return (beta_0, beta_1)
+    teta_0 = 0
+    teta_1 = 1
+    convergido = False
+    while not convergido:
+        teta_0 = teta_0 - alpha * gradiente_teta_0()
+        teta_1 = teta_1 -  alpha * gradiente_teta_1()
+        convergido = True
+    return (teta_0, teta_1)
 
 print(ys[0:5])
+#descenso_gradiente(j,1.5)
