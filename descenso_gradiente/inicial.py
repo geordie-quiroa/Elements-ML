@@ -1,5 +1,6 @@
 from random import random, uniform, seed
 import matplotlib.pyplot as plt
+
 """ Generacion de los datos
 - xs = lista de valores en x.
 - ys = lista de valores para fx.
