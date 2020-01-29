@@ -75,34 +75,3 @@ def descenso_gradiente(alpha, n_iteraciones, tol):
 
 
 print(descenso_gradiente(0.25,100,0.0001))
-
-
-def coste(x, y, a, b):
-    m = len(x)
-    error = 0.0
-    for i in range(m):
-        hipotesis = a+b*x[i]
-        error +=  (y[i] - hipotesis) ** 2
-    return error / (2*m)
-
-def ddescenso_gradiente(x, y, a, b, alpha, epochs):
-    m = len(x)
-    hist_coste = []
-    for ep in range(epochs):
-        b_deriv = 0
-        a_deriv = 0
-        for i in range(m):
-            hipotesis = a+b*x[i]
-            a_deriv += hipotesis - y[i]
-            b_deriv += (hipotesis - y[i]) * x[i]
-            hist_coste.append(coste(x, y, a, b))
-        a -= (a_deriv / m) * alpha
-        b -= (b_deriv / m) * alpha
-        
-    return a, b, hist_coste
-
-a=1
-b=1
-alpha = 0.0001
-iters = 100
-a,b, hist_coste = ddescenso_gradiente(xs, ys, a, b, alpha, iters)
