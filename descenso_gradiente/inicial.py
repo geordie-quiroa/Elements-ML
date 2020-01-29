@@ -35,53 +35,24 @@ j = lambda teta_0, teta_1: 1 * (2*m)**-1 * sum([(h_teta(teta_0, teta_1, i) - fx(
 
 # def jota(teta_0, teta_1):
 #    return 1 / 2*m * sum(error_cuadrado)
-
-alpha = 1.5
-
-print(teta_0, teta_1)
-print(j(teta_0, teta_1))
-print(0, 1)
-print(j(0, 1))
-teta_0 = 0
-teta_1 = 1
-
-teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
-
-print(teta_0, teta_1)
-print(j(teta_0, teta_1))
-
-teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
-
-print(teta_0, teta_1)
-print(j(teta_0, teta_1))
-
-teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
-
-print(teta_0, teta_1)
-print(j(teta_0, teta_1))
-
-teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
-teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
-
-print(teta_0, teta_1)
-print(j(teta_0, teta_1))
-
-
 #print(h_teta(teta_0, teta_1, 1))
 #print(error_cuadrado[:5])
 
-def descenso_gradiente(j, alpha):
+def descenso_gradiente(alpha):
     teta_0 = 0
     teta_1 = 1
     convergido = False
     while not convergido:
-        teta_0 = teta_0 - alpha * gradiente_teta_0()
-        teta_1 = teta_1 -  alpha * gradiente_teta_1()
-        convergido = True
+        
+        teta_0_old = teta_0
+        teta_1_old = teta_1
+
+        teta_0 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi)) for xi in xs])
+        teta_1 -= 1 * (m)**-1 * alpha * sum([(h_teta(teta_0, teta_1, xi) - fx(xi))*xi for xi in xs])
+        
+        if abs(j(teta_0, teta_1) - j(teta_0_old, teta_1_old)) < 0.005:
+            convergido = True
     return (teta_0, teta_1)
 
-print(ys[0:5])
-#descenso_gradiente(j,1.5)
+
+print(descenso_gradiente(1.5))
