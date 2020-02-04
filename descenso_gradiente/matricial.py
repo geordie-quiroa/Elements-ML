@@ -27,3 +27,7 @@ X = np.vstack(
 ).T # Se transpuso la matriz para tener la columna de unos y asi calcular teta_0
 
 print(X[:10,:])
+print(X.shape)
+m, n = X.shape
+tetas = np.random.rand(2,1)
+print(tetas)
