@@ -28,6 +28,9 @@ X = np.vstack(
 
 print(X[:10,:])
 print(X.shape)
+
 m, n = X.shape
 tetas = np.random.rand(2,1)
+
+h = np.matmul(X, tetas) # vector solucion
 print(tetas)
