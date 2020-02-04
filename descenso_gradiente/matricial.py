@@ -1,5 +1,6 @@
 from random import random, uniform, seed
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 """ Generacion de los datos
