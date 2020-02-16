@@ -42,9 +42,9 @@ ys = ys.reshape(m,1) # convertir a vector columna
 
 tetas = np.random.rand(2,1)
 
-alpha = 0.00001
+alpha = 0.0001
 
-for i in range(10000):
+for i in range(100000):
     h = np.matmul(X, tetas) # vector solucion (100,1)
     #print((h - ys).shape) # (100,1) - (100,1)
     tetas -= alpha * ((np.matmul((h - ys).T, X).T) / float(m)) # (1,100) * (100, 2) . T = (2, 1) //reshape(2,1)
